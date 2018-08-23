@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%- include('../partials/head', { title: 'Detalle del producto'}) %>
+</head>
+<body>
+	<%- include('../partials/navbar') %>
+	<div class="jumbotron jumbotron-fluid">
+	  <div class="container d-flex justify-content-between">
+	    <h1 class="display-4"> Detalle del producto </h1>
+	  </div>
+	</div>
+
+	<div class="container">
+		<h5 class="card-title"><%=product.title%></h5>
+		<div class="row">
+			<img src="/assets/images/<%=product.image%>" alt="Card image cap">
+			<div class="card-body">
+				<p>$ <%=product.price%></p>		    
+			    <p class="card-text"><%=product.descriptionS%></p>
+			    <p class="card-text"><%=product.descriptionL%></p>
+			</div>
+
+		</div>
+		
+	</div>
+
+</body>
+</html>

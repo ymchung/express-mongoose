@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%- include('../partials/head', { title: 'Inicio'}) %>
+</head>
+<body>
+	<%- include('../partials/navbar') %>
+	<div class="jumbotron jumbotron-fluid">
+	  <div class="container d-flex justify-content-between">
+	    <h1 class="display-4"> Inicio </h1>
+	    <form class="form-inline my-2 my-lg-0">
+	      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	    </form>
+	  </div>
+	</div>
+
+	<div class="container">
+		<div class="card-columns">
+
+		<% products.forEach(product => { %>
+
+			<div class="card" style="width: 16rem;">
+			  <img class="card-img-top" src="/assets/images/<%=product.image%>" alt="Card image cap">
+			  <div class="card-body">
+			  	<div class="d-flex justify-content-between">
+			    	<h5 class="card-title"><%=product.title%></h5>
+			    	<p class="card-text">$ <%=product.price%></p>
+				</div>
+			    <p class="card-text"><%=product.descriptionS%></p>
+			    <a href="/product/<%=product.slug%>" class="btn btn-primary d-flex justify-content-center">Ver más</a>
+			  </div>
+			</div>
+
+		<% })%>
+		</div>
+		
+	</div>
+
+</body>
+</html>
