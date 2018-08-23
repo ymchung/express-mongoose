@@ -2,7 +2,7 @@ const User = require('./../models/user')
 const utils = require('./../utils')
 const bcrypt = require('bcrypt')
 
-const { usernameExists, emailExists } = utils
+const { userExistsByKey } = utils
 
 const user_login_get = (req, res) => {
 	res.render('pages/login')
@@ -30,7 +30,7 @@ const user_register_post = (req, res, next) => {
 
 	} else {
 
-		Promise.all([usernameExists(username), emailExists(email)]).then(values => {
+		Promise.all([userExistsByKey('username', username), userExistsByKey('email',email)]).then(values => {
 			console.log(values)
 			if (values[0]) {
 				res.render('pages/register', { error: 'El username ya existe', ...req.body })
