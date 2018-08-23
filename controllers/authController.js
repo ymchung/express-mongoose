@@ -1,5 +1,8 @@
 const User = require('./../models/user')
+const utils = require('./../utils')
 const bcrypt = require('bcrypt')
+
+const { usernameExists, emailExists } = utils
 
 const user_login_get = (req, res) => {
 	res.render('pages/login')
@@ -50,27 +53,6 @@ const user_register_post = (req, res, next) => {
 		})
 	}
 }
-
-function usernameExists(value){
-    return new Promise((resolve, reject) => {
-        User.find({username: value.toLowerCase()})
-          .exec((err, doc) => {
-            if (err) return reject(err)
-            else return resolve(doc.length != 0)
-          })
-    })
- }
-
- function emailExists(value){
-    return new Promise((resolve, reject) => {
-        User.find({email:value})
-          .exec((err, doc) => {
-            if (err) return reject(err)
-            else return resolve(doc.length != 0)
-          })
-    })
- }
-
 
 module.exports = {
 	user_login_get, 

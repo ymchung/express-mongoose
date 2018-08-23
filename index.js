@@ -5,7 +5,6 @@ const app = express()
 const indexRouter = require('./routes/indexRoutes')
 const productRouter = require('./routes/productRoutes')
 
-
 app.listen(1337, () => console.log('Listening on port 1337'))
 mongoose.connect('mongodb://localhost/p5_webstore_db')
 
