@@ -1,17 +1,18 @@
 const express = require('express')
 const router = express.Router()
+const path = require('path')
 
 const productController = require('./../controllers/productController')
 
-const multer  = require('multer')
+const multer = require('multer')
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, __dirname + '/../public/images')
+    cb(null, path.join(__dirname, '/../public/images'))
   },
   filename: function (req, file, cb) {
-  	const ext = file.originalname.split('.').pop()
-  	const fileName = req.body.title.toLowerCase().replace(/ /g, '-')
+    const ext = file.originalname.split('.').pop()
+    const fileName = req.body.title.toLowerCase().replace(/ /g, '-')
     cb(null, fileName + '-' + Date.now() + '.' + ext)
   }
 })
