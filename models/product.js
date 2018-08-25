@@ -7,7 +7,7 @@ const productSchema = new mongoose.Schema({
   descriptionL: { type: String },
   image: { type: String, required: true },
   slug: { type: String, required: true }
-})
+}, { versionKey: false })
 
 const Product = mongoose.model('product', productSchema)
 
